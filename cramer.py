@@ -10,6 +10,6 @@ def cramer_method(A, B):
         A_copy = A.copy()
         A_copy[:, i] = B
         det_A_i = det_4x4(A_copy)
-        solutions.append(float(det_A_i) / float(det_A))  # Convert to standard float
+        solutions.append(float(det_A_i) / float(det_A))  
     
     return solutions

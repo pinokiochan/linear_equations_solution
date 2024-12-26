@@ -5,7 +5,7 @@ def gauss_seidel_method(A, b, max_iter=1000, tol=1e-10):
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
     n = len(b)
-    iterations = 0  # Initialize iterations counter
+    iterations = 0  
     
     if not is_diagonally_dominant(A):
         P = np.eye(n)
@@ -17,7 +17,7 @@ def gauss_seidel_method(A, b, max_iter=1000, tol=1e-10):
                 P[[i, max_row]] = P[[max_row, i]]
     
     if np.any(np.abs(np.diag(A)) < 1e-10):
-        return None, iterations, A  # Return None if diagonal elements are too small
+        return None, iterations, A  
     
     x = np.zeros(n)
     
@@ -28,14 +28,14 @@ def gauss_seidel_method(A, b, max_iter=1000, tol=1e-10):
             s2 = np.dot(A[i, i+1:], x[i+1:])
             x_new[i] = (b[i] - s1 - s2) / A[i, i]
 
-        iterations += 1  # Increment iteration count
+        iterations += 1  
         
         if np.allclose(x, x_new, rtol=tol):
-            return x_new, iterations, A  # Return the result, iteration count, and modified A
+            return x_new, iterations, A  
             
         if np.any(np.isnan(x_new)) or np.any(np.abs(x_new) > 1e6):
-            return None, iterations, A  # Return None if invalid result encountered
+            return None, iterations, A  
             
         x = x_new
     
-    return None, iterations, A  # Return None if max_iter is reached
+    return None, iterations, A

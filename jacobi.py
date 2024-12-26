@@ -5,7 +5,7 @@ def jacobi_method(A, b, max_iter=1000, tol=1e-10):
     A = np.array(A, dtype=float)
     b = np.array(b, dtype=float)
     n = len(b)
-    iterations = 0  # Initialize iterations counter
+    iterations = 0  
 
     if not is_diagonally_dominant(A):
         P = np.eye(n)
@@ -18,19 +18,19 @@ def jacobi_method(A, b, max_iter=1000, tol=1e-10):
 
     D = np.diag(A)
     if np.any(np.abs(D) < 1e-10):
-        return None, iterations, A  # Return None if D has values too close to zero
+        return None, iterations, A  
     
     R = A - np.diagflat(D)
     x = np.zeros(n)
     
     for i in range(max_iter):
-        x_new = (b - np.dot(R, x)) / D
-        iterations += 1  # Increment iteration count
+        x_new = (b - np.dot(R, x)) 
+        iterations += 1  
         if np.allclose(x, x_new, rtol=tol):
-            return x_new, iterations, A  # Return the result, number of iterations, and modified A
+            return x_new, iterations, A  
         x = x_new
         
         if np.any(np.isnan(x)) or np.any(np.abs(x) > 1e6):
-            return None, iterations, A  # Return None if invalid result is encountered
+            return None, iterations, A  
             
-    return None, iterations, A  # Return None if max_iter is reached
+    return None, iterations, A  

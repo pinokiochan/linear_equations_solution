@@ -41,7 +41,6 @@ def main(A, b):
     
 
 if __name__ == "__main__":
-    # Test system
     A = np.array([
         [3, -5, 47, 20],
         [11, 16, 17, 10],
