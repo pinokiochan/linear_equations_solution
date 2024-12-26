@@ -24,7 +24,7 @@ def jacobi_method(A, b, max_iter=1000, tol=1e-10):
     x = np.zeros(n)
     
     for i in range(max_iter):
-        x_new = (b - np.dot(R, x)) 
+        x_new = (b - np.dot(R, x)) / D
         iterations += 1  
         if np.allclose(x, x_new, rtol=tol):
             return x_new, iterations, A  
