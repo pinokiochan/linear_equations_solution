@@ -4,7 +4,7 @@ from gauss import gauss_method
 from jacobi import jacobi_method
 from gauss_seidel import gauss_seidel_method
 
-def compare_methods(A, b):
+def main(A, b):
     print("Original system:")
     print("Matrix A:")
     print(A)
@@ -51,4 +51,4 @@ if __name__ == "__main__":
     
     b = np.array([18, 26, 34, 82], dtype=float)
     
-    compare_methods(A, b)
+    main(A, b)
